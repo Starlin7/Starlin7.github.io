@@ -1,46 +1,52 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, FolderOpen, Mail, Download } from 'lucide-react';
+import { ArrowDown, FolderOpen, Mail, Download, BarChart3, Database } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen bg-navy overflow-hidden flex items-center pt-24 pb-16 lg:py-0">
+    <section id="home" className="relative min-h-screen bg-navy overflow-hidden flex items-center pt-28 pb-20 lg:py-0">
       {/* Background Ambient Glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-electric/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan/10 rounded-full blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-navy-light/50 via-navy to-navy" />
+        <div className="absolute top-16 left-10 w-72 h-72 bg-electric/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan/15 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-navy-light/60 via-navy to-navy" />
       </div>
 
       <div className="container-custom relative z-10 w-full">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Content */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* Content Column */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="lg:col-span-7 order-2 lg:order-1"
+            className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left"
           >
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-cyan font-medium mb-3 sm:mb-4 tracking-wide"
-            >
-              Hello, I'm
-            </motion.p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-              Starlin{' '}
-              <span className="gradient-text">Pereira</span>
+            {/* Greeting Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-electric/10 border border-cyan/30 text-cyan text-xs sm:text-sm font-medium mb-5 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
+              <span>Hello, I'm</span>
+            </div>
+
+            {/* Main Name */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight leading-[1.15]">
+              Starlin <span className="gradient-text">Pereira</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-300 mb-5 font-medium">
+
+            {/* Professional Title */}
+            <p className="text-lg sm:text-xl text-gray-200 font-semibold mb-5 tracking-wide">
               Data Analyst | SQL | Python | Power BI | Excel
             </p>
-            <p className="text-gray-400 text-base sm:text-lg mb-8 leading-relaxed max-w-xl">
-              Turning Data into Insights. Building Clarity Through Analytics.
-            </p>
 
-            <div className="flex flex-wrap gap-3.5 sm:gap-4">
+            {/* Tagline */}
+            <div className="mb-8 flex justify-center lg:justify-start">
+              <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl border-l-2 border-electric/50 pl-4 text-left italic">
+                "Turning Data into Insights. Building Clarity Through Analytics."
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3.5 sm:gap-4">
               <a href="#projects" className="btn-primary">
                 <FolderOpen size={18} />
                 <span>View My Projects</span>
@@ -60,36 +66,60 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Profile Photograph */}
+          {/* Round Profile Photograph Column */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
-            className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
+            className="lg:col-span-5 order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative group max-w-xs sm:max-w-sm w-full flex justify-center">
-              {/* Soft Ambient Glow */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-electric via-cyan to-blue-500 rounded-3xl blur-2xl opacity-35 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+            <div className="relative group">
+              {/* Outer Ambient Glow */}
+              <div className="absolute -inset-3 bg-gradient-to-tr from-electric via-cyan to-blue-500 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
 
-              {/* Gradient Border Frame */}
-              <div className="relative p-1 rounded-3xl bg-gradient-to-tr from-electric via-cyan/70 to-blue-500/50 shadow-2xl shadow-black/40">
-                <div className="relative w-56 sm:w-64 md:w-72 lg:w-80 aspect-[3/4] rounded-[22px] overflow-hidden bg-navy-light">
-                  <img
-                    src="/assets/starlin-pereira.jpg"
-                    alt="Starlin Pereira – Data Analyst"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    loading="eager"
-                  />
-                  {/* Subtle Inner Edge Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent pointer-events-none" />
+              {/* Concentric Circular Border */}
+              <div className="relative p-1.5 sm:p-2 rounded-full bg-gradient-to-tr from-electric via-cyan to-blue-500 shadow-2xl shadow-black/50">
+                <div className="p-1 sm:p-1.5 rounded-full bg-navy">
+                  <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 aspect-square rounded-full overflow-hidden bg-navy-light">
+                    <img
+                      src="/assets/starlin-pereira.jpg"
+                      alt="Starlin Pereira – Data Analyst"
+                      className="w-full h-full object-cover object-[center_18%] transition-transform duration-500 group-hover:scale-105"
+                      loading="eager"
+                    />
+                    {/* Subtle bottom shadow vignette */}
+                    <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10 pointer-events-none" />
+                  </div>
                 </div>
               </div>
+
+              {/* Floating Analytical Badges */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="absolute -top-2 -left-2 sm:top-2 sm:-left-4 bg-navy-light/95 backdrop-blur-md border border-white/15 px-3 sm:px-3.5 py-1.5 rounded-full shadow-xl flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-white"
+              >
+                <BarChart3 size={14} className="text-cyan" />
+                <span>Data Analytics</span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="absolute -bottom-2 -right-2 sm:bottom-4 sm:-right-4 bg-navy-light/95 backdrop-blur-md border border-white/15 px-3 sm:px-3.5 py-1.5 rounded-full shadow-xl flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-white"
+              >
+                <Database size={14} className="text-electric" />
+                <span>SQL • Python • Power BI</span>
+              </motion.div>
             </div>
           </motion.div>
+
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Down Indicator */}
       <motion.a
         href="#about"
         initial={{ opacity: 0 }}
