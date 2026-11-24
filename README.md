@@ -1,6 +1,6 @@
 # Starlin Pereira - Portfolio Website
 
-> Modern, responsive, and recruiter-friendly portfolio website for **Starlin Pereira** — Data Analyst | SQL | Python | Power BI | Excel.
+**Starlin Pereira** — Data Analyst | SQL | Python | Power BI | Excel.
 
 Live Website: [https://starlin7.github.io](https://starlin7.github.io)
 
