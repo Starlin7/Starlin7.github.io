@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, FolderOpen, Mail, Download, BarChart3, Database } from 'lucide-react';
+import { ArrowDown, FolderOpen, Mail, Download } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -80,39 +80,18 @@ export default function Hero() {
               {/* Concentric Circular Border */}
               <div className="relative p-1.5 sm:p-2 rounded-full bg-gradient-to-tr from-electric via-cyan to-blue-500 shadow-2xl shadow-black/50">
                 <div className="p-1 sm:p-1.5 rounded-full bg-navy">
-                  <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 aspect-square rounded-full overflow-hidden bg-navy-light">
+                  <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 aspect-square rounded-full overflow-hidden bg-gradient-to-b from-navy-light to-navy">
                     <img
-                      src="/assets/starlin-pereira.jpg"
+                      src="/assets/starlin-pereira.png"
                       alt="Starlin Pereira – Data Analyst"
                       className="w-full h-full object-cover object-[center_18%] transition-transform duration-500 group-hover:scale-105"
                       loading="eager"
                     />
-                    {/* Subtle bottom shadow vignette */}
+                    {/* Subtle inner ring highlight */}
                     <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10 pointer-events-none" />
                   </div>
                 </div>
               </div>
-
-              {/* Floating Analytical Badges */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="absolute -top-2 -left-2 sm:top-2 sm:-left-4 bg-navy-light/95 backdrop-blur-md border border-white/15 px-3 sm:px-3.5 py-1.5 rounded-full shadow-xl flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-white"
-              >
-                <BarChart3 size={14} className="text-cyan" />
-                <span>Data Analytics</span>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -bottom-2 -right-2 sm:bottom-4 sm:-right-4 bg-navy-light/95 backdrop-blur-md border border-white/15 px-3 sm:px-3.5 py-1.5 rounded-full shadow-xl flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-white"
-              >
-                <Database size={14} className="text-electric" />
-                <span>SQL • Python • Power BI</span>
-              </motion.div>
             </div>
           </motion.div>
 
