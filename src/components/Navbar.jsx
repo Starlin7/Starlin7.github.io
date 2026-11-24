@@ -68,9 +68,9 @@ export default function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleClick(e, '#home')}
-            className="text-xl font-bold text-white hover:opacity-90 transition-opacity"
+            className="text-lg sm:text-xl font-bold text-white hover:opacity-90 transition-opacity whitespace-nowrap"
           >
-            Starlin<span className="gradient-text">.</span>
+            Starlin <span className="gradient-text">Pereira</span>
           </a>
 
           {/* Desktop Nav */}
