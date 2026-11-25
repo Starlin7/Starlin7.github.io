@@ -46,19 +46,43 @@ export default function Navbar() {
 
   const handleClick = (e, href) => {
     e.preventDefault();
+
+    // 1. Immediately close the mobile menu state
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      const offset = 80;
-      const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+
+    // 2. Locate target element
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    // 3. Calculate target scroll offset (64px mobile navbar, 80px desktop)
+    const isMobile = window.innerWidth < 768;
+    const navOffset = isMobile ? 64 : 80;
+
+    if (href === '#home') {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 50);
+      return;
     }
+
+    const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    const elementRect = target.getBoundingClientRect();
+    const targetY = Math.max(0, elementRect.top + currentScrollY - navOffset);
+
+    // 4. Defer scrolling by 50ms so the mobile menu exit animation
+    // does not cancel or interrupt the browser's smooth scroll queue
+    setTimeout(() => {
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth',
+      });
+    }, 50);
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || mobileOpen
           ? 'bg-navy/95 backdrop-blur-md shadow-lg shadow-black/10'
           : 'bg-transparent'
       }`}
@@ -106,10 +130,11 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-navy-light/95 backdrop-blur-md border-t border-white/10"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+            className="md:hidden bg-navy-light/95 backdrop-blur-md border-t border-white/10 max-h-[calc(100vh-4.5rem)] overflow-y-auto overscroll-contain"
           >
             <div className="container-custom py-4 space-y-1">
               {navLinks.map(({ label, href }) => (
@@ -117,10 +142,10 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={(e) => handleClick(e, href)}
-                  className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                  className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all cursor-pointer touch-manipulation ${
                     activeSection === href.slice(1)
                       ? 'text-cyan bg-white/10'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5 active:bg-white/10'
                   }`}
                 >
                   {label}
